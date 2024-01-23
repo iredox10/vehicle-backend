@@ -2,7 +2,7 @@ import express from 'express'
 import * as controller from '../controllers/controllers.js'
 const route = express.Router()
 
-route('/', async (req,res) => res.json('everything is up :)'))
+route.get('/', async (req,res) => res.json('everything is up :)'))
 route.post("/payment", controller.payment);
 route.post('/register', controller.register)
 route.post("/login", controller.login);
