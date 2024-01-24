@@ -5,8 +5,7 @@ dotenv.config()
 const connectMongoose = async () =>{
     try {
         const res = await mongoose.connect(
-        //   "mongodb://localhost/vehicle" ||
-            process.env.MONGODB_URI
+            "mongodb+srv://idreesadam200:iredox@cluster0.jcxb8on.mongodb.net/?retryWrites=true&w=majority"
         );
         console.log('connect to mongoose')
     } catch (err) {
