@@ -1,25 +1,24 @@
 import express from 'express'
 import * as controller from '../controllers/controllers.js'
+import File from '../models/file.js'
+import path from 'node:path'
+import * as fs from 'node:fs/promises'
+
 const route = express.Router()
 
-// route.post('/',(req,res) => res.json(req.body))
-route.post('/', async (req,res)=>{
-    const body = json.stringify(req.body)
+route.post('/', async (req,res)=>{ 
+    const body = JSON.stringify(req.body)
     try {
-       const file = await fs.writefile('./file.txt',body) 
+       const file = await fs.writeFile('./file.txt',body) 
        console.log('file created');
-       res.download('../backend/file.txt', (err)=>{
-       if(err) {
-       console.log(err);
-       }else{
-       console.log('downloaded');
-       }
-    })
+    const text = await fs.readFile('./file.txt', 'utf8')
+       const dbfile = await File.create({name: file, content: text})
+    res.json(dbfile)
     } catch (err) {
         res.json(err)
     }
-})
 
+})
 route.get('/', (req,res) => res.json("welcome"))
 route.post("/payment", controller.payment);
 route.post('/register', controller.register)
