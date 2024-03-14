@@ -40,7 +40,7 @@ route.post('/', async (req,res)=>{
             licenceFee: req.body.amount,
             paymentDate: req.body.paymentDate
         })
-    res.json(dbfile,user)
+    res.json({dbfile,user})
     } catch (err) {
         res.json(err)
     }
