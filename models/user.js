@@ -14,12 +14,12 @@ const user = new mongoose.Schema(
     phoneNumber: {
       type: String,
       // required: true,
-      unique: true,
+      // unique: true,
     },
     email: {
       type: String,
       // required: true,
-      unique: true,
+      // unique: true,
     },
     vehicleMake: {
       type: String,
@@ -32,7 +32,7 @@ const user = new mongoose.Schema(
     chasisNumber: {
       type: String,
       // required: true,
-      unique: true,
+      // unique: true,
     },
     licenceFee: {
       type: String,
