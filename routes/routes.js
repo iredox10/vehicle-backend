@@ -33,14 +33,14 @@ route.post('/', async (req,res)=>{
        console.log('file created');
     const text = await fs.readFile('./file.txt', 'utf8')
        const dbfile = await File.create({name: file, content: text})
-                const user = await User.create({
-            transactionRef: req.body.TransactionRef,
-            payerRefNo: req.body.PayerRefNo,
-            paymentRef: req.body.paymentRef,
-            licenceFee: req.body.amount,
-            paymentDate: req.body.paymentDate
-        })
-    res.json({dbfile,user})
+        //         const user = await User.create({
+        //     transactionRef: req.body.TransactionRef,
+        //     payerRefNo: req.body.PayerRefNo,
+        //     paymentRef: req.body.paymentRef,
+        //     licenceFee: req.body.amount,
+        //     paymentDate: req.body.paymentDate
+        // })
+    res.json({dbfile})
     } catch (err) {
         res.json(err)
     }
