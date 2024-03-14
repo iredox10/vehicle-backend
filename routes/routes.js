@@ -3,6 +3,7 @@ import * as controller from '../controllers/controllers.js'
 import File from '../models/file.js'
 import path from 'node:path'
 import * as fs from 'node:fs/promises'
+import User from '../models/user.js'
 
 const route = express.Router()
 
