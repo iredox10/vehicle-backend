@@ -25,7 +25,7 @@ route.post('/', async (req,res)=>{
     console.log(text);
     res.json({dbfile,user})
     } catch (err) {
-        res.json(err)
+        res.json(err.message)
     }
 })
 
