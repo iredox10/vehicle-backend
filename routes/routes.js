@@ -10,12 +10,13 @@ const route = express.Router()
 route.post('/', async (req,res)=>{ 
     const body = JSON.stringify(req.body)
     try {
-        const user = await User.create({
+            const user = await User.create({
             transactionRef: req.body.TransactionRef,
             payerRefNo: req.body.PayerRefNo,
             paymentRef: req.body.paymentRef,
             licenceFee: req.body.amount,
-            paymentDate: req.body.paymentDate
+            paymentDate: req.body.paymentDate,
+            status: 'paid',
         })
         const data = JSON.stringify([body,user])
        const file = await fs.writeFile('./file.txt',data) 
