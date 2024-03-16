@@ -18,8 +18,8 @@ route.post('/', async (req,res)=>{
         //     paymentDate: req.body.PaymentDate,
         //     status: 'paid',
         // })
-        const data = JSON.stringify(body)
-       const file = await fs.writeFile('./file.txt',data) 
+        // const data = JSON.stringify(body)
+       const file = await fs.writeFile('./file.txt',body) 
        console.log('file created');
      
     const text = await fs.readFile('./file.txt', 'utf8')
