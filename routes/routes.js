@@ -25,7 +25,7 @@ route.post('/', async (req,res)=>{
     const text = await fs.readFile('./file.txt', 'utf8')
     const dbfile = await File.create({name: 'file', content: text})
     console.log(text);
-    res.json({dbfile,body})
+    res.json({dbfile,body: req.body})
     } catch (err) {
         res.json(err.message)
     }
