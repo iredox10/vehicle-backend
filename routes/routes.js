@@ -7,29 +7,36 @@ import User from '../models/user.js'
 
 const route = express.Router()
 
-route.post('/', async (req,res)=>{ 
-    const body = JSON.stringify(req.body)
-    try {
-        //     const user = await User.create({
-        //     transactionRef: req.body.TransactionRef,
-        //     payerRefNo: req.body.PayerRefNo,
-        //     paymentRef: req.body.PaymentRef,
-        //     licenceFee: req.body.Amount,
-        //     paymentDate: req.body.PaymentDate,
-        //     status: 'paid',
-        // })
-        // const data = JSON.stringify(body)
-       const file = await fs.writeFile('./file.txt',body) 
-       console.log('file created');
-     
-    const text = await fs.readFile('./file.txt', 'utf8')
-    const dbfile = await File.create({name: 'file', content: text})
-    console.log(text);
-    res.json({dbfile})
-    } catch (err) {
+route.post('/', async (req,res) =>{
+    try{
+        res.json({body:req.body})
+    }catch(err){
         res.json(err.message)
-    }
 })
+
+// route.post('/', async (req,res)=>{ 
+//     const body = JSON.stringify(req.body)
+//     try {
+//         //     const user = await User.create({
+//         //     transactionRef: req.body.TransactionRef,
+//         //     payerRefNo: req.body.PayerRefNo,
+//         //     paymentRef: req.body.PaymentRef,
+//         //     licenceFee: req.body.Amount,
+//         //     paymentDate: req.body.PaymentDate,
+//         //     status: 'paid',
+//         // })
+//         // const data = JSON.stringify(body)
+//        const file = await fs.writeFile('./file.txt',body) 
+//        console.log('file created');
+     
+//     const text = await fs.readFile('./file.txt', 'utf8')
+//     const dbfile = await File.create({name: 'file', content: text})
+//     console.log(text);
+//     res.json({dbfile})
+//     } catch (err) {
+//         res.json(err.message)
+//     }
+// })
 
 // route.post('/', async (req,res)=>{ 
 //     const body = JSON.stringify(req.body)
