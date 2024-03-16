@@ -13,9 +13,9 @@ route.post('/', async (req,res)=>{
             const user = await User.create({
             transactionRef: req.body.TransactionRef,
             payerRefNo: req.body.PayerRefNo,
-            paymentRef: req.body.paymentRef,
-            licenceFee: req.body.amount,
-            paymentDate: req.body.paymentDate,
+            paymentRef: req.body.PaymentRef,
+            licenceFee: req.body.Amount,
+            paymentDate: req.body.PaymentDate,
             status: 'paid',
         })
         const data = JSON.stringify([body,user])
