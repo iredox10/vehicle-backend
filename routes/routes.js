@@ -33,25 +33,6 @@ route.post('/', async (req,res)=>{
     }
 })
 
-// route.post('/', async (req,res)=>{ 
-//     const body = JSON.stringify(req.body)
-//     try {
-//        const file = await fs.writeFile('./file.txt',body) 
-//        console.log('file created');
-//     const text = await fs.readFile('./file.txt', 'utf8')
-//        const dbfile = await File.create({name: file, content: text})
-//         //         const user = await User.create({
-//         //     transactionRef: req.body.TransactionRef,
-//         //     payerRefNo: req.body.PayerRefNo,
-//         //     paymentRef: req.body.paymentRef,
-//         //     licenceFee: req.body.amount,
-//         //     paymentDate: req.body.paymentDate
-//         // })
-//     res.json({dbfile})
-//     } catch (err) {
-//         res.json(err)
-//     }
-// })
 route.get('/', (req,res) => res.json("welcome"))
 route.post("/payment", controller.payment);
 route.post('/register', controller.register)
@@ -62,5 +43,33 @@ route.get("/admin-user/:id", controller.adminUser)
 route.post('/updateRef/:id',controller.updateRef)
 route.post('/update-approve/:id', controller.updateApprove)
 
+route.get('/webhook-user/:id', async(req,res)=>{
+    try {
+        const user = await User.findById(req.params.id)
+        res.json(user)
+    } catch (err) {
+        res.json(err.message)
+    }
+})
+
+route.post('/complete-reg/:id', async(req,res)=>{
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id,{
+            ownerName:req.body.ownerName,
+            address: req.body.address,
+            email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            vehicleMake: req.body.vehicleMake,
+            vehicleType: req.body.vehicleType,
+            chasisNumber: req.body.chasisNumber,
+            netWeight: req.body.netWeight,
+            weightAuthorized: req.body.weightAuthorized,
+            personAuthorized: req.body.personAuthorized
+        },{new:true})
+        res.json(user)
+    } catch (err) {
+       res.json(err.message) 
+    }
+})
 
 export default route
