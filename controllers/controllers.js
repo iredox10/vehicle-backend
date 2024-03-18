@@ -63,7 +63,7 @@ export const users = async (req, res) => {
 
 export const user = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id)
+    const user = await User.findOne({_id:req.params.id})
     res.json(user);
   } catch (err) {
     res.json(err.message);
