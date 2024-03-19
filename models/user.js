@@ -78,7 +78,11 @@ const user = new mongoose.Schema(
     },
     dateOfBirth: Date,
     issueDate: Date,
-    expiredDate: Date
+    expiredDate: Date,
+    webhookUser:{
+      type: Boolean,
+      default: false
+    }
   },
   { timestamps: true }
 );
